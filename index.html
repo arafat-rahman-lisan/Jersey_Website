@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jersey Hub</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#" aria-label="Jersey Hub home">
+        <span class="brand-mark">JH</span>
+        <span>Jersey Hub</span>
+      </a>
+      <button class="cart-button" id="openCart" type="button" aria-label="Open cart">
+        Cart <span id="cartCount">0</span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">New jerseys</p>
+      <h1>Pick your team.</h1>
+      <p>Simple size, fast cart, easy buy.</p>
+    </section>
+
+    <section class="quick-tools" aria-label="Shop filters">
+      <label class="search-box">
+        <span>Search</span>
+        <input id="searchInput" type="search" placeholder="Argentina, Brazil, France">
+      </label>
+      <label class="select-box">
+        <span>Type</span>
+        <select id="categoryFilter">
+          <option value="all">All</option>
+          <option value="Player">Player</option>
+          <option value="Away">Away</option>
+          <option value="Home">Home</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="product-grid" id="productGrid" aria-live="polite"></section>
+
+    <section class="size-chart" id="sizeChart" aria-label="Jersey size chart">
+      <div class="size-chart-copy">
+        <p class="eyebrow">Size chart</p>
+        <h2>Find your fit.</h2>
+      </div>
+      <div class="size-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Length</th>
+              <th>Chest</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S</td><td>26</td><td>36</td></tr>
+            <tr><td>M</td><td>27</td><td>38</td></tr>
+            <tr><td>L</td><td>28</td><td>40</td></tr>
+            <tr><td>XL</td><td>29</td><td>42</td></tr>
+            <tr><td>XXL</td><td>30</td><td>44</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <section>
+        <h2>Top Categories</h2>
+        <a href="#shop">Argentina</a>
+        <a href="#shop">Brazil</a>
+        <a href="#shop">France</a>
+      </section>
+      <section>
+        <h2>Help</h2>
+        <a href="#">Delivery</a>
+        <a href="#">Secure Payments</a>
+        <a href="#">Track an order</a>
+        <a href="#">Contact us</a>
+      </section>
+      <section>
+        <h2>About Us</h2>
+        <a href="#">Careers</a>
+        <a href="#">Terms & Conditions</a>
+        <a href="#">Privacy Policy</a>
+      </section>
+      <section>
+        <h2>Feedback</h2>
+        <a href="#">Leave a feedback</a>
+      </section>
+    </div>
+
+    <div class="store-block">
+      <h2>Find A Store</h2>
+      <p>Find Jersey Hub products near you.</p>
+      <button type="button">Store Locator</button>
+    </div>
+
+    <div class="social-block">
+      <h2>Follow Us</h2>
+      <div class="social-links" aria-label="Social links">
+        <a href="#" aria-label="TikTok">T</a>
+        <a href="#" aria-label="Facebook">f</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+
+    <form class="newsletter">
+      <h2>Newsletter Subscription</h2>
+      <p>Receive product news and updates.</p>
+      <label>
+        <span>Email address</span>
+        <input type="email" placeholder="Email Address">
+      </label>
+      <button type="submit" aria-label="Subscribe">-></button>
+    </form>
+  </footer>
+
+  <aside class="cart-panel" id="cartPanel" aria-hidden="true">
+    <div class="cart-header">
+      <div>
+        <p class="eyebrow">Cart</p>
+        <h2>Your order</h2>
+      </div>
+      <button class="icon-button" id="closeCart" type="button" aria-label="Close cart">x</button>
+    </div>
+
+    <div class="cart-items" id="cartItems"></div>
+    <div class="empty-cart" id="emptyCart">
+      <strong>No jersey added.</strong>
+      <span>Tap Add to cart or Buy now.</span>
+    </div>
+
+    <div class="cart-footer">
+      <div class="summary-line">
+        <span>Subtotal</span>
+        <strong id="subtotal">BDT 0</strong>
+      </div>
+      <div class="summary-line">
+        <span>Delivery</span>
+        <strong id="shipping">BDT 0</strong>
+      </div>
+      <div class="summary-line total">
+        <span>Total</span>
+        <strong id="total">BDT 0</strong>
+      </div>
+      <button class="checkout-button" id="checkoutButton" type="button">Checkout</button>
+      <p class="checkout-note" id="checkoutNote" role="status"></p>
+    </div>
+  </aside>
+
+  <aside class="detail-panel" id="detailPanel" aria-hidden="true">
+    <div class="detail-shell">
+      <button class="icon-button detail-close" id="closeDetails" type="button" aria-label="Close details">x</button>
+      <div class="detail-media" id="detailMedia"></div>
+      <div class="detail-copy">
+        <p class="eyebrow" id="detailType">Details</p>
+        <h2 id="detailTitle">Jersey details</h2>
+        <div class="detail-price" id="detailPrice"></div>
+        <p id="detailText"></p>
+        <div class="detail-gallery" id="detailGallery" aria-label="Product media"></div>
+        <div class="mini-chart" id="detailSizes" aria-label="Choose size in details"></div>
+        <div class="detail-actions">
+          <button class="buy-button" id="detailBuy" type="button">BUY NOW</button>
+          <button class="add-button" id="detailAdd" type="button">ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <button class="mobile-cart" id="mobileCart" type="button">
+    View cart <span id="mobileCartCount">0</span>
+  </button>
+  <a class="to-top" href="#" aria-label="Back to top">^</a>
+  <div class="overlay" id="overlay" tabindex="-1"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

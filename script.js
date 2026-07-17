@@ -51,7 +51,7 @@ const products = [
     id: 5,
     name: "France Home Jersey",
     type: "Home",
-    image: "img/france.pnjpeg",
+    image: "img/france.jpeg",
     price: 790,
     oldPrice: 1390,
     discount: "43% OFF",
